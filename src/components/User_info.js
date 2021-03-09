@@ -15,6 +15,9 @@ const Main = styled.div`
   h2{
      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+hr{
+  margin: auto 20px;
+}
   .icon{
     height: 30px;
     width: 30px;
@@ -45,6 +48,7 @@ const User_Info = () => {
             </div>
             <Img src={state.user.profilePicture}/>
             <h3>{state.user.firstName} {state.user.lastName}</h3>
+            <hr></hr>
             <h2>{state.company.name}</h2>
             <SimpleMap/>
         </Main>
