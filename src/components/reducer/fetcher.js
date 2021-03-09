@@ -1,7 +1,9 @@
 import axios from 'axios';
-const initialState = {isDataLoaded: false, isConfigLoaded: false}
-const app_id =  process.env.REACT_APP_APP_ID || 1
+import {fetchAction} from '../actions/actions';
+import {AddFetchConfiguration} from '../actions/actions';
 
+const initialState = {isDataLoaded: false, isConfigLoaded: false, setOpen: false}
+const app_id =  process.env.REACT_APP_APP_ID || 1
 
 
 function fetchUrl() {
@@ -11,18 +13,6 @@ function fetchConfiguration(){
     return fetch(`https://api-test.innoloft.com/configuration/${app_id}/`)
 }
 
-function fetchAction(data){
-    return{
-        type:'/fetcher/loaded',
-        payload: data
-    }
-}
-function AddFetchConfiguration(data){
-    return{
-        type:'/fetcher/addConfig',
-        payload: data
-    }
-}
 
 
 export default function myFetcher(state = initialState, action){
@@ -33,12 +23,15 @@ export default function myFetcher(state = initialState, action){
         case '/fetcher/addConfig':{
             return   {...state, config: action.payload, isConfigLoaded: true }
         }
+        case 'nav/setOpen':{
+            return   {...state, setOpen: !state.setOpen }
+        }
         default: return {...state}
     }
 }
 
 
-export function  fetchData(dispatch){
+export function fetchData(dispatch){
   fetchUrl()
  .then(response => response.json())
  .then( data=>dispatch(fetchAction(data)))
@@ -49,6 +42,7 @@ export function fetchConfig(dispatch){
     .then(response=>response.json())
     .then(data=>dispatch(AddFetchConfiguration(data)))
 }
+
 
 // export function handleCategoriesForm(text){
 //     return function sendToCategories(dispatch){

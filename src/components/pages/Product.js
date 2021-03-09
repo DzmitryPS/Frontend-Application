@@ -9,6 +9,11 @@ const Main = styled.div`
  width: 100%;
 margin-left: 10px;
 display: flex;
+
+@media (max-width: 695px) {
+    flex-wrap: wrap;
+    justify-content: center;
+}
 `
 
 const Product = () => {

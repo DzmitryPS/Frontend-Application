@@ -4,8 +4,8 @@ import {Route, Switch} from 'react-router-dom';
 import Home from './components/pages/Home';
 import Product from './components/pages/Product';
 import Top from './components/atoms/Top';
-import Navigation from './components/Navigation';
 import styled from 'styled-components';
+import Burger from '../src/components/navbar/Burger';
 
 const MainDiv = styled.div`
  display: flex;
@@ -19,7 +19,7 @@ function App() {
     <div className="App">
     <Top/>
     <MainDiv>
-   <Navigation/>  
+   <Burger/>  
    <Switch>
    <Route exact path='/'
         render={props=> <Home {...props}/>}

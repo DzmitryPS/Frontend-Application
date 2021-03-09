@@ -36,7 +36,7 @@ export default class SimpleMap extends Component {
           defaultCenter={this.state.center}
           defaultZoom={this.state.zoom}
         >
-          <i class="fas fa-map-pin" 
+          <i class="fas fa-hand-pointer" 
           lat={50.77971514439381} 
           lng={6.100484404868937} 
           ></i>

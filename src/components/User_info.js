@@ -11,7 +11,11 @@ const Main = styled.div`
   border-radius: 10px 10px 0 0;
   box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
   max-width:400px;
-  min-width: 230px;
+  min-width: 210px;
+
+  @media (max-width: 695px) {
+    width: 400px;
+}
   h2{
      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

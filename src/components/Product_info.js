@@ -14,7 +14,10 @@ background-color: white;
   border-radius: 10px 10px 0 0;
   box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
   max-width:700px;
-  min-width: 400px;
+  
+  @media (max-width: 695px) {
+    width: 400px;
+}
 a{
     text-decoration: none;
     color: white;
@@ -26,7 +29,16 @@ a{
 .descr{
   text-align: left;
   padding: 15px;
+  margin-top: 10px;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  max-height: 355px;
+
+  @media (max-width: 695px) {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow-y: scroll;
+}
+  
 }
 .bottom_div{
    display: flex;
