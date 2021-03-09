@@ -6,26 +6,32 @@ import { useSelector } from 'react-redux';
 
 const Main = styled.div`
  height: 700px;
- width: 1100px;
+ width: 100%;
 margin-left: 10px;
 display: flex;
 `
 
 const Product = () => {
 
-    const isLoaded = useSelector(state => state.isLoaded);
+    const isDataLoaded = useSelector(state => state.isDataLoaded);
     const userSection = useSelector(state=>state.config)
+    const isConfigLoaded = useSelector(state=>state.isConfigLoaded)
 
     console.log(userSection)
     return (
         <div>
-            {isLoaded ?
+            {isDataLoaded
+             ?
             <Main>
             <Product_Info/>
-            {userSection.hasUserSection && <User_Info/>}
+            {isConfigLoaded 
+            ?
+           <>{userSection.hasUserSection && <User_Info/>}</>
+            :
+            <>loading...</>}
             </Main>
             :
-            <p>loading...</p>
+            <>loading...</>
             }
         </div>
     )

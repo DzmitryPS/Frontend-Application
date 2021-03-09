@@ -1,5 +1,5 @@
 import axios from 'axios';
-const initialState = {isLoaded: false}
+const initialState = {isDataLoaded: false, isConfigLoaded: false}
 const app_id =  process.env.REACT_APP_APP_ID || 1
 
 
@@ -11,7 +11,7 @@ function fetchConfiguration(){
     return fetch(`https://api-test.innoloft.com/configuration/${app_id}/`)
 }
 
-export function fetchAction(data){
+function fetchAction(data){
     return{
         type:'/fetcher/loaded',
         payload: data
@@ -28,10 +28,10 @@ function AddFetchConfiguration(data){
 export default function myFetcher(state = initialState, action){
     switch(action.type){
         case '/fetcher/loaded':{
-            return  {...state, data:action.payload, isLoaded: true}
+            return  {...state, data:action.payload, isDataLoaded: true}
         }
         case '/fetcher/addConfig':{
-            return   {...state, config: action.payload }
+            return   {...state, config: action.payload, isConfigLoaded: true }
         }
         default: return {...state}
     }
@@ -39,13 +39,13 @@ export default function myFetcher(state = initialState, action){
 
 
 export function  fetchData(dispatch){
- const response =  fetchUrl()
+  fetchUrl()
  .then(response => response.json())
  .then( data=>dispatch(fetchAction(data)))
 }
 
 export function fetchConfig(dispatch){
-    const response = fetchConfiguration()
+    fetchConfiguration()
     .then(response=>response.json())
     .then(data=>dispatch(AddFetchConfiguration(data)))
 }

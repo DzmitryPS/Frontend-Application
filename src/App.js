@@ -3,7 +3,7 @@ import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import Home from './components/pages/Home';
 import Product from './components/pages/Product';
-import Top from './components/Top';
+import Top from './components/atoms/Top';
 import Navigation from './components/Navigation';
 import styled from 'styled-components';
 

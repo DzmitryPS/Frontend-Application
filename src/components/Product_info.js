@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
-import Button from './Button';
+import Button from './atoms/Button';
 import { useDispatch } from 'react-redux';
 import handleCategoriesForm from './reducer/fetcher';
 
@@ -15,7 +15,11 @@ background-color: white;
   box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
   max-width:700px;
   min-width: 400px;
-
+a{
+    text-decoration: none;
+    color: white;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
   h3{
   font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -52,28 +56,47 @@ li{
 }
 .main_info{
   height:40px ;
-  background-color: #F0F0F0;
+  background-color: ${({color})=>(color && color.mainColor)};  
   display: flex;
   justify-content: space-around;
   p{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin: 0;
     margin-top: 12px;
+    color:white;
+  
   }
-  h2{
+  h1{
     margin: 0;
-    margin-top: 5px;
+    margin-top: 2px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:white;
   }
 }
 
 .icon{
     height: 30px;
     width: 30px;
-    background-color: #64B0FB;
-    border-radius: 10px 0 10px 0;
+    background-color:  ${({color})=>(color && color.mainColor)};  
+    border-radius: 10px 0 0 0;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     position: absolute;
+}
+.icon_text{
+  position: absolute;
+  margin-left: 30px;
+  background-color:#BEBEBE;
+  height: 30px;
+  border-radius: 0 0 10px 0;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+p{
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  font-size: 15px;
+  margin: 3px;
+  margin-top: 6px;
+  color: ${({color})=>(color && color.mainColor)};  
+}
 }
   i{
     margin-top: 5px;
@@ -81,10 +104,10 @@ li{
   }
 `
 const Img = styled.img`
-width: 100%;
+width: 80%;
 height:190px;
 margin-top: 0px;
-max-width:530px;
+max-width:510px;
 `
 
 const Product_Info = () => {
@@ -92,7 +115,7 @@ const Product_Info = () => {
   const [content, switchContent] = useState('description');
   const [categories, setCategories]= useState('')
   const state = useSelector(state => state.data);
-  const name = useSelector(state => state.data.name);
+  const config = useSelector(state => state.config);
   const dispatch = useDispatch()
 
   function onClickToDescr(){
@@ -124,13 +147,17 @@ const Product_Info = () => {
   }
 
     return (
-        <Main>
+        <Main color={config}>
             <div className="icon">
             <i class="fas fa-id-card-alt"></i>
             </div>
+            <div className="icon_text">
+              <p>StartUp</p> 
+            </div>
             <Img src={state.picture}/>
             <div className="main_info">
-               <h2>{name}</h2><p>{state.type.name + ` (id: ${(state.type.id)})`}</p>
+               <h1><a href="https://innoloft.com/search?type=all&search=software" target="_blank">{state.name}</a></h1>
+               <p><a href="https://innoloft.com/institutions/single/218/InnoloftGmbH9d924a69" target="_blank">{state.type.name}</a></p>
             </div>
             <div className='btns'>
             <Button 
