@@ -14,7 +14,7 @@ const Main = styled.div`
   min-width: 210px;
 
   @media (max-width: 695px) {
-    width: 400px;
+    min-width:350px;
 }
   h2{
      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;

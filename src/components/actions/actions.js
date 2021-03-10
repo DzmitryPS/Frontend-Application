@@ -16,3 +16,17 @@ export function AddFetchConfiguration(data){
         payload: data
     }
 }
+
+export function AddSingleCategie(data){
+    return{
+        type:'/fetcher/addCateg',
+        payload: data
+    }
+}
+
+export function AddSingleModel(data){
+    return{
+        type:'/fetcher/addModel',
+        payload: data
+    }
+}

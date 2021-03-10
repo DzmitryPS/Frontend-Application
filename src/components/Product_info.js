@@ -1,10 +1,8 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
 import Button from './atoms/Button';
-import { useDispatch } from 'react-redux';
-import handleCategoriesForm from './reducer/fetcher';
-
+import { useDispatch, useSelector } from 'react-redux';
+import {addCategorie, addBusinessModel} from './reducer/fetcher';
 
 const Main = styled.div`
 background-color: white;
@@ -16,7 +14,7 @@ background-color: white;
   max-width:700px;
   
   @media (max-width: 695px) {
-    width: 400px;
+    min-width:350px;
 }
 a{
     text-decoration: none;
@@ -61,6 +59,19 @@ li{
     background-clip: padding-box;
 }
   }
+.btn{
+  appearance: none;
+  border: 0;
+  background: ${({color})=>(color && color.mainColor)};  
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  transition: 0.1s ease-in;
+  :hover{
+      background-color:#4C66D4;
+  }
+}
 .btns{
   margin-top: 10px;
   display: flex;
@@ -126,6 +137,7 @@ const Product_Info = () => {
 
   const [content, switchContent] = useState('description');
   const [categories, setCategories]= useState('')
+  const [businessModel, setBusinessModel]= useState('')
   const state = useSelector(state => state.data);
   const config = useSelector(state => state.config);
   const dispatch = useDispatch()
@@ -137,26 +149,26 @@ const Product_Info = () => {
     switchContent('atributes')
   }
 
-  function onChangeCategories(event){
-    setCategories(event.target.value)
-  }
-
-  //  function handleCategoriesForm(event, text){
-  //   event.preventDefault();
-  //   return function sendToCategories(dispatch){
-  //     const newCategorie = {text}
-
-  //   }
-  // }
-
-  function handleChange(e){
+  function handleChangeCateg(e){
     setCategories(e.target.value)
   }
-  function handleForm(e){
+
+  function handleChangeModel(e){
+    setBusinessModel(e.target.value)
+  }
+  
+  function handleFormCateg(e){
     e.preventDefault();
-   dispatch(handleCategoriesForm(categories))
+   dispatch(addCategorie(categories))
     setCategories('')
   }
+  
+  function handleFormModel(e){
+    e.preventDefault();
+   dispatch(addBusinessModel(businessModel))
+   setBusinessModel('')
+  }
+
 
     return (
         <Main color={config}>
@@ -195,15 +207,14 @@ const Product_Info = () => {
               {state.categories.map(item=>{
                 return <li>{"#" + item.name}</li>
               })}
-        <form onSubmit={handleForm} className="form">      
+        <form onSubmit={handleFormCateg} className="form">      
         <input
         placeholder="add"
         value={categories}
-        onChange={handleChange}
-        
-      />
-      <button className="btn">add</button>
-      </form>
+        onChange={handleChangeCateg}
+        />
+        <button className="btn">add</button>
+        </form>
             </ul>
             
            
@@ -212,6 +223,14 @@ const Product_Info = () => {
               {state.businessModels.map(item=>{
                 return <li>{"#" + item.name}</li>
               })}
+              <form onSubmit={handleFormModel} className="form">      
+               <input
+                placeholder="add"
+                 value={businessModel}
+                 onChange={handleChangeModel}
+               />
+      <button className="btn">add</button>
+      </form>
             </ul>
             </div>
             <h3>{state.trl.name}</h3>

@@ -58,8 +58,16 @@ display: none;
        margin: 0
       }
 	}
- 
-  
+    @media (max-width: 695px) {
+
+		transform: ${({ open }) => (open ? "translateX(70%)" : "translateX(100%)")};
+    }
+    @media (max-width: 500px) {
+transform: ${({ open }) => (open ? "translateX(60%)" : "translateX(100%)")};
+}
+@media (max-width: 500px) {
+transform: ${({ open }) => (open ? "translateX(50%)" : "translateX(100%)")};
+}
 `
 
 const RightNav = () => {

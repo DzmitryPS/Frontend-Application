@@ -1,13 +1,13 @@
 import axios from 'axios';
-import {fetchAction} from '../actions/actions';
-import {AddFetchConfiguration} from '../actions/actions';
+import {fetchAction, AddFetchConfiguration, AddSingleCategie, AddSingleModel} from '../actions/actions';
+
 
 const initialState = {isDataLoaded: false, isConfigLoaded: false, setOpen: false}
 const app_id =  process.env.REACT_APP_APP_ID || 1
 
 
 function fetchUrl() {
-    return fetch('https://api-test.innoloft.com//product/6781/');
+    return ('https://api-test.innoloft.com//product/6781/');
   }
 function fetchConfiguration(){
     return fetch(`https://api-test.innoloft.com/configuration/${app_id}/`)
@@ -26,13 +26,19 @@ export default function myFetcher(state = initialState, action){
         case 'nav/setOpen':{
             return   {...state, setOpen: !state.setOpen }
         }
+        case '/fetcher/addCateg':{
+            return  {...state, data:{...state.data, categories: [...state.data.categories,{name: action.payload}]}}
+        }
+        case '/fetcher/addModel':{
+            return  {...state, data:{...state.data, businessModels: [...state.data.businessModels,{name: action.payload}]}}
+        }
         default: return {...state}
     }
 }
 
 
 export function fetchData(dispatch){
-  fetchUrl()
+    fetch(fetchUrl())
  .then(response => response.json())
  .then( data=>dispatch(fetchAction(data)))
 }
@@ -44,47 +50,22 @@ export function fetchConfig(dispatch){
 }
 
 
-// export function handleCategoriesForm(text){
-//     return function sendToCategories(dispatch){
-//       const newCategorie = {text}
-//      const response = fetch('https://api-test.innoloft.com//product/6781/',{
-//         method: 'PUT',
-//         body: newCategorie 
-//      })
-//      .then(response=>response.json())
-//      .then(data=>dispatch( addCategorie(data)))
-//     }
-//   }
+export function addCategorie(text) {
+    return (dispatch) => {
+      return axios
+        .put(fetchUrl(), text)
+        .then((responseFromHell) => {
+          dispatch(AddSingleCategie(responseFromHell.config.data));
+        });
+    };
+  };
 
-// export const handleCategoriesForm =(text) =>{
-// return dispatch=>{
-// axios.put('https://api-test.innoloft.com//product/6781/',{text})
-// .then(res=>console.log(res.data))
-// }
-// }
-
-
-// try {
-//     const response = await fetch(url, {
-//       method: 'POST', // или 'PUT'
-//       body: JSON.stringify(data), // данные могут быть 'строкой' или {объектом}!
-//       headers: {
-//         'Content-Type': 'application/json'
-//       }
-//     });
-//     const json = await response.json();
-//     console.log('Успех:', JSON.stringify(json));
-//   } catch (error) {
-//     console.error('Ошибка:', error);
-//   }
-
-// try {
-//     const response = await fetch('https://example.com/profile/avatar', {
-//       method: 'PUT',
-//       body: formData
-//     });
-//     const result = await response.json();
-//     console.log('Успех:', JSON.stringify(result));
-//   } catch (error) {
-//     console.error('Ошибка:', error);
-//   }
+  export function addBusinessModel(text) {
+    return (dispatch) => {
+      return axios
+        .put(fetchUrl(), text)
+        .then((responseFromHell) => {
+          dispatch(AddSingleModel(responseFromHell.config.data));
+        });
+    };
+  };

@@ -6,8 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
-import {fetchData} from '../src/components/reducer/fetcher';
-import {fetchConfig} from '../src/components/reducer/fetcher';
+import {fetchData, fetchConfig} from '../src/components/reducer/fetcher';
+
 
 store.dispatch(fetchData)
 store.dispatch(fetchConfig)

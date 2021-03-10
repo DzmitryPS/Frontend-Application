@@ -7,6 +7,8 @@ display: flex;
 height: 55px;
 justify-content: center;
 background-color: white;
+
+
 `
 
 
