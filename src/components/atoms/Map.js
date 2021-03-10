@@ -17,32 +17,31 @@ i{
 `
 
 export default class SimpleMap extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            center: {
-                lat: 50.77971514439381,
-                lng: 6.100484404868937
-            },
-            zoom: 7,
-        };
-    }
-  
-    render() {
-      return (
-          <Main>
-         <GoogleMapReact
-         bootstrapURLKeys={{key:  process.env.REACT_APP_GOOGLE_MAP_KEY}}
+  constructor(props) {
+    super(props);
+    this.state = {
+      center: {
+        lat: 50.77971514439381,
+        lng: 6.100484404868937
+      },
+      zoom: 7,
+    };
+  }
+
+  render() {
+    return (
+      <Main>
+        <GoogleMapReact
+          bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_KEY }}
           defaultCenter={this.state.center}
           defaultZoom={this.state.zoom}
         >
-          <i class="fas fa-hand-pointer" 
-          lat={50.77971514439381} 
-          lng={6.100484404868937} 
+          <i class="fas fa-hand-pointer"
+            lat={50.77971514439381}
+            lng={6.100484404868937}
           ></i>
         </GoogleMapReact>
-        </Main>
-      );
-    }
+      </Main>
+    );
   }
-  
+}

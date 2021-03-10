@@ -13,7 +13,7 @@ background-color: white;
 const Top = () => {
     return (
         <Div>
-           <img src={logo_image} alt="logo"/>
+            <img src={logo_image} alt="logo" />
         </Div>
     )
 }

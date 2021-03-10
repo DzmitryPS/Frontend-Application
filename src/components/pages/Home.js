@@ -7,9 +7,7 @@ const Main = styled.div`
 
 const Home = () => {
     return (
-        <Main>
-            
-        </Main>
+        <Main/>     
     )
 }
 

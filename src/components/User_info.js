@@ -25,7 +25,7 @@ hr{
 .icon{
     height: 30px;
     width: 30px;
-    background-color: ${({color})=>(color && color.mainColor)}; 
+    background-color: ${({ color }) => (color && color.mainColor)}; 
     border-radius: 10px 0 10px 0;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     position: absolute;
@@ -43,20 +43,20 @@ border-radius:100%;
 
 const User_Info = () => {
 
-  const state = useSelector(state=>state.data);
+  const state = useSelector(state => state.data);
   const config = useSelector(state => state.config);
-    return (
-        <Main color={config}>
-             <div className="icon">
-             <i class="fas fa-user-tie"></i>
-            </div>
-            <Img src={state.user.profilePicture}/>
-            <h3>{state.user.firstName} {state.user.lastName}</h3>
-            <hr></hr>
-            <h2>{state.company.name}</h2>
-            <SimpleMap/>
-        </Main>
-    )
+  return (
+    <Main color={config}>
+      <div className="icon">
+        <i class="fas fa-user-tie"></i>
+      </div>
+      <Img src={state.user.profilePicture} />
+      <h3>{state.user.firstName} {state.user.lastName}</h3>
+      <hr></hr>
+      <h2>{state.company.name}</h2>
+      <SimpleMap />
+    </Main>
+  )
 }
 
 export default User_Info

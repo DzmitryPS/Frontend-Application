@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from './atoms/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import {addCategorie, addBusinessModel} from './reducer/fetcher';
+import { addCategorie, addBusinessModel } from './reducer/fetcher';
 
 const Main = styled.div`
 background-color: white;
@@ -57,7 +57,7 @@ li{
 .btn{
   appearance: none;
   border: 0;
-  background: ${({color})=>(color && color.mainColor)};  
+  background: ${({ color }) => (color && color.mainColor)};  
   color: #fff;
   font-size: 16px;
   cursor: pointer;
@@ -74,7 +74,7 @@ li{
 }
 .main_info{
   height:40px ;
-  background-color: ${({color})=>(color && color.mainColor)};  
+  background-color: ${({ color }) => (color && color.mainColor)};  
   display: flex;
   justify-content: space-around;
 p{
@@ -95,7 +95,7 @@ h1{
 .icon{
     height: 30px;
     width: 30px;
-    background-color:  ${({color})=>(color && color.mainColor)};  
+    background-color:  ${({ color }) => (color && color.mainColor)};  
     border-radius: 10px 0 0 0;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     position: absolute;
@@ -113,7 +113,7 @@ p{
   font-size: 15px;
   margin: 3px;
   margin-top: 6px;
-  color: ${({color})=>(color && color.mainColor)};  
+  color: ${({ color }) => (color && color.mainColor)};  
 }
 }
 i{
@@ -131,106 +131,106 @@ max-width:510px;
 const Product_Info = () => {
 
   const [content, switchContent] = useState('description');
-  const [categories, setCategories]= useState('')
-  const [businessModel, setBusinessModel]= useState('')
+  const [categories, setCategories] = useState('')
+  const [businessModel, setBusinessModel] = useState('')
   const state = useSelector(state => state.data);
   const config = useSelector(state => state.config);
   const dispatch = useDispatch()
 
-  function onClickToDescr(){
+  function onClickToDescr() {
     switchContent('description')
   }
-  function onClickToAtrib(){
+  function onClickToAtrib() {
     switchContent('atributes')
   }
 
-  function handleChangeCateg(e){
+  function handleChangeCateg(e) {
     setCategories(e.target.value)
   }
 
-  function handleChangeModel(e){
+  function handleChangeModel(e) {
     setBusinessModel(e.target.value)
   }
-  
-  function handleFormCateg(e){
+
+  function handleFormCateg(e) {
     e.preventDefault();
-   dispatch(addCategorie(categories))
+    dispatch(addCategorie(categories))
     setCategories('')
   }
-  
-  function handleFormModel(e){
+
+  function handleFormModel(e) {
     e.preventDefault();
-   dispatch(addBusinessModel(businessModel))
-   setBusinessModel('')
+    dispatch(addBusinessModel(businessModel))
+    setBusinessModel('')
   }
 
 
-    return (
-        <Main color={config}>
-            <div className="icon">
-                 <i class="fas fa-id-card-alt"></i>
-            </div>
-            <div className="icon_text">
-                 <p>StartUp</p> 
-            </div>
-            <Img src={state.picture}/>
-            <div className="main_info">
-               <h1>{state.name}</h1>
-               <p>{state.type.name}</p>
-            </div>
-            <div className='btns'>
-                <Button 
-                text='Description'
-                onClick={onClickToDescr}
-                myState={content}
-                />
-                <Button
-                text='Atributes'
-                onClick={onClickToAtrib}
-                myState={content}
-                />
-            </div>
-        {content === 'description' ? 
-            <div className="descr">
-                 <p>{state.description}</p>
-            </div>
-            :
-          <div>
-            <div className="bottom_div">
-        <ul>
-              <p>Categories:</p>
-              {state.categories.map(item=>{
-                return <li>{"#" + item.name}</li>
-              })}
-            <form onSubmit={handleFormCateg} className="form">      
-            <input
-            placeholder="add"
-            value={categories}
-            onChange={handleChangeCateg}
+  return (
+    <Main color={config}>
+      <div className="icon">
+        <i class="fas fa-id-card-alt"></i>
+      </div>
+      <div className="icon_text">
+        <p>StartUp</p>
+      </div>
+      <Img src={state.picture} />
+      <div className="main_info">
+        <h1>{state.name}</h1>
+        <p>{state.type.name}</p>
+      </div>
+      <div className='btns'>
+        <Button
+          text='Description'
+          onClick={onClickToDescr}
+          myState={content}
         />
-        <button className="btn">add</button>
-        </form>
-        </ul>
-        <ul>
-              <p>Business Models:</p>
-              {state.businessModels.map(item=>{
+        <Button
+          text='Atributes'
+          onClick={onClickToAtrib}
+          myState={content}
+        />
+      </div>
+      {content === 'description' ?
+        <div className="descr">
+          <p>{state.description}</p>
+        </div>
+        :
+        <div>
+          <div className="bottom_div">
+            <ul>
+              <p>Categories:</p>
+              {state.categories.map(item => {
                 return <li>{"#" + item.name}</li>
               })}
-            <form onSubmit={handleFormModel} className="form">      
-                 <input
-                 placeholder="add"
-                 value={businessModel}
-                 onChange={handleChangeModel}
-                 />
-              <button className="btn">add</button>
-            </form>
-        </ul>
-            </div>
-                 <h3>{state.trl.name}</h3>
-         </div>
-        }
-        </Main>
-    )
+              <form onSubmit={handleFormCateg} className="form">
+                <input
+                  placeholder="add"
+                  value={categories}
+                  onChange={handleChangeCateg}
+                />
+                <button className="btn">add</button>
+              </form>
+            </ul>
+            <ul>
+              <p>Business Models:</p>
+              {state.businessModels.map(item => {
+                return <li>{"#" + item.name}</li>
+              })}
+              <form onSubmit={handleFormModel} className="form">
+                <input
+                  placeholder="add"
+                  value={businessModel}
+                  onChange={handleChangeModel}
+                />
+                <button className="btn">add</button>
+              </form>
+            </ul>
+          </div>
+          <h3>{state.trl.name}</h3>
+        </div>
+      }
+    </Main>
+  )
 }
 
 export default Product_Info

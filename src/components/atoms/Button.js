@@ -6,7 +6,7 @@ const Btn = styled.button`
  appearance: none;
   border: 0;
   border-radius: 5px;
-  background: ${({color})=>(color && color.mainColor)};  
+  background: ${({ color }) => (color && color.mainColor)};  
   color: #fff;
   padding: 8px 16px;
   font-size: 16px;
@@ -19,14 +19,14 @@ const Btn = styled.button`
 `
 
 
- const Button =({text, onClick})=>{
-   
-        const config = useSelector(state => state.config);
+const Button = ({ text, onClick }) => {
 
-        return (
-            <div>
-                <Btn onClick={onClick} color={config} >{text}</Btn>
-            </div>
-        )
+    const config = useSelector(state => state.config);
+
+    return (
+        <div>
+            <Btn onClick={onClick} color={config} >{text}</Btn>
+        </div>
+    )
 }
 export default Button

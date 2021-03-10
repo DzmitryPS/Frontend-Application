@@ -19,23 +19,23 @@ display: flex;
 const Product = () => {
 
     const isDataLoaded = useSelector(state => state.isDataLoaded);
-    const userSection = useSelector(state=>state.config)
-    const isConfigLoaded = useSelector(state=>state.isConfigLoaded)
+    const userSection = useSelector(state => state.config)
+    const isConfigLoaded = useSelector(state => state.isConfigLoaded)
 
     return (
         <div>
             {isDataLoaded
-             ?
-            <Main>
-            <Product_Info/>
-            {isConfigLoaded 
-            ?
-           <>{userSection.hasUserSection && <User_Info/>}</>
-            :
-            <>loading...</>}
-            </Main>
-            :
-            <>loading...</>
+                ?
+                <Main>
+                    <Product_Info />
+                    {isConfigLoaded
+                        ?
+                        <>{userSection.hasUserSection && <User_Info />}</>
+                        :
+                        <>loading...</>}
+                </Main>
+                :
+                <>loading...</>
             }
         </div>
     )
