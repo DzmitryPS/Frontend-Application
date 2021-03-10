@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 
@@ -21,7 +21,6 @@ const Btn = styled.button`
 
  const Button =({text, onClick})=>{
    
-        
         const config = useSelector(state => state.config);
 
         return (
@@ -29,7 +28,5 @@ const Btn = styled.button`
                 <Btn onClick={onClick} color={config} >{text}</Btn>
             </div>
         )
-    
 }
-
 export default Button

@@ -13,15 +13,10 @@ background-color: white;
   box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
   max-width:700px;
   
-  @media (max-width: 695px) {
+@media (max-width: 695px) {
     min-width:350px;
 }
-a{
-    text-decoration: none;
-    color: white;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  }
-  h3{
+h3{
   font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 .descr{
@@ -68,7 +63,7 @@ li{
   cursor: pointer;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   transition: 0.1s ease-in;
-  :hover{
+:hover{
       background-color:#4C66D4;
   }
 }
@@ -82,14 +77,14 @@ li{
   background-color: ${({color})=>(color && color.mainColor)};  
   display: flex;
   justify-content: space-around;
-  p{
+p{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin: 0;
     margin-top: 12px;
     color:white;
   
   }
-  h1{
+h1{
     margin: 0;
     margin-top: 2px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -121,9 +116,9 @@ p{
   color: ${({color})=>(color && color.mainColor)};  
 }
 }
-  i{
-    margin-top: 5px;
-    color: white;
+i{
+  margin-top: 5px;
+  color: white;
   }
 `
 const Img = styled.img`
@@ -173,70 +168,67 @@ const Product_Info = () => {
     return (
         <Main color={config}>
             <div className="icon">
-            <i class="fas fa-id-card-alt"></i>
+                 <i class="fas fa-id-card-alt"></i>
             </div>
             <div className="icon_text">
-              <p>StartUp</p> 
+                 <p>StartUp</p> 
             </div>
             <Img src={state.picture}/>
             <div className="main_info">
-               <h1><a href="https://innoloft.com/search?type=all&search=software" target="_blank">{state.name}</a></h1>
-               <p><a href="https://innoloft.com/institutions/single/218/InnoloftGmbH9d924a69" target="_blank">{state.type.name}</a></p>
+               <h1>{state.name}</h1>
+               <p>{state.type.name}</p>
             </div>
             <div className='btns'>
-            <Button 
-            text='Description'
-            onClick={onClickToDescr}
-            myState={content}
-            />
-            <Button
-            text='Atributes'
-            onClick={onClickToAtrib}
-            myState={content}
-            />
+                <Button 
+                text='Description'
+                onClick={onClickToDescr}
+                myState={content}
+                />
+                <Button
+                text='Atributes'
+                onClick={onClickToAtrib}
+                myState={content}
+                />
             </div>
-            {content === 'description' ? 
+        {content === 'description' ? 
             <div className="descr">
-            <p>{state.description}</p>
-          </div>
-          :
+                 <p>{state.description}</p>
+            </div>
+            :
           <div>
             <div className="bottom_div">
-            <ul>
+        <ul>
               <p>Categories:</p>
               {state.categories.map(item=>{
                 return <li>{"#" + item.name}</li>
               })}
-        <form onSubmit={handleFormCateg} className="form">      
-        <input
-        placeholder="add"
-        value={categories}
-        onChange={handleChangeCateg}
+            <form onSubmit={handleFormCateg} className="form">      
+            <input
+            placeholder="add"
+            value={categories}
+            onChange={handleChangeCateg}
         />
         <button className="btn">add</button>
         </form>
-            </ul>
-            
-           
-            <ul>
+        </ul>
+        <ul>
               <p>Business Models:</p>
               {state.businessModels.map(item=>{
                 return <li>{"#" + item.name}</li>
               })}
-              <form onSubmit={handleFormModel} className="form">      
-               <input
-                placeholder="add"
+            <form onSubmit={handleFormModel} className="form">      
+                 <input
+                 placeholder="add"
                  value={businessModel}
                  onChange={handleChangeModel}
-               />
-      <button className="btn">add</button>
-      </form>
-            </ul>
+                 />
+              <button className="btn">add</button>
+            </form>
+        </ul>
             </div>
-            <h3>{state.trl.name}</h3>
-          </div>
-            }
-            
+                 <h3>{state.trl.name}</h3>
+         </div>
+        }
         </Main>
     )
 }

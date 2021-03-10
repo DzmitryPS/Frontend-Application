@@ -12,12 +12,12 @@ height: 0px;
 width: 150px;
 
 li{
-  letter-spacing: 0.84px;
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  padding: 10px;
-  transition: 0.3s ease-in;
-  text-align: left;
-  margin-top: 0px;
+    letter-spacing: 0.84px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 10px;
+    transition: 0.3s ease-in;
+    text-align: left;
+    margin-top: 0px;
 }
 li:hover{
     background-color:#BEBEBE;
@@ -27,45 +27,45 @@ a{
     color: black;
 }
 hr{
-display: none;
+    display: none;
 }
 
 @media (max-width: 1000px) {
-		flex-flow: column nowrap;
-		background-color: #F0F0F0;
-		position: fixed;
-		transform: ${({ open }) => (open ? "translateX(80%)" : "translateX(100%)")};
-		top: 0;
-		right: 0;
-		width: 100%;
-		margin-top: 56px;
-		padding: 5px 0 80px 0;
-		transition: transform 0.3s ease-in-out;
-     li{
-        display: flex;
-        flex-direction: row-reverse;
-        justify-content: flex-end;
-        margin:auto;
-    .fa-home {
-        margin-left: 30px;
+	flex-flow: column nowrap;
+	background-color: #F0F0F0;
+	position: fixed;
+	transform: ${({ open }) => (open ? "translateX(80%)" : "translateX(100%)")};
+	top: 0;
+	right: 0;
+	width: 100%;
+	margin-top: 56px;
+	padding: 5px 0 80px 0;
+	transition: transform 0.3s ease-in-out;
+ li{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    margin:auto;
+.fa-home {
+    margin-left: 30px;
     }
-    .fa-id-card-alt{
-        margin-left: 47px;
+.fa-id-card-alt{
+    margin-left: 47px;
     }
-     }    
-    hr{
-       display: block;
-       margin: 0
-      }
-	}
+}    
+hr{
+    display: block;
+    margin: 0
+    }
+}
     @media (max-width: 695px) {
 
-		transform: ${({ open }) => (open ? "translateX(70%)" : "translateX(100%)")};
+transform: ${({ open }) => (open ? "translateX(70%)" : "translateX(100%)")};
     }
     @media (max-width: 500px) {
 transform: ${({ open }) => (open ? "translateX(60%)" : "translateX(100%)")};
 }
-@media (max-width: 500px) {
+    @media (max-width: 500px) {
 transform: ${({ open }) => (open ? "translateX(50%)" : "translateX(100%)")};
 }
 `

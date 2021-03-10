@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import SimpleMap from './atoms/Map';
@@ -16,13 +16,13 @@ const Main = styled.div`
   @media (max-width: 695px) {
     min-width:350px;
 }
-  h2{
+h2{
      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 hr{
   margin: auto 20px;
 }
-  .icon{
+.icon{
     height: 30px;
     width: 30px;
     background-color: ${({color})=>(color && color.mainColor)}; 
@@ -30,7 +30,7 @@ hr{
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     position: absolute;
 }
-  i{
+i{
     margin-top: 5px;
     color: white;
 }

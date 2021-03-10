@@ -5,8 +5,8 @@ import User_Info from '../User_info';
 import { useSelector } from 'react-redux';
 
 const Main = styled.div`
- height: 700px;
- width: 100%;
+height: 700px;
+width: 100%;
 margin-left: 10px;
 display: flex;
 
@@ -22,7 +22,6 @@ const Product = () => {
     const userSection = useSelector(state=>state.config)
     const isConfigLoaded = useSelector(state=>state.isConfigLoaded)
 
-    console.log(userSection)
     return (
         <div>
             {isDataLoaded
