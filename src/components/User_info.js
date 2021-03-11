@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import SimpleMap from './atoms/Map';
+import React from 'react';
+import styled from 'styled-components';
 
 const Main = styled.div`
   background-color: #F0FFFF;
